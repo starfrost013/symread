@@ -25,7 +25,7 @@ try
         PrintHelpAndExit(1);
     }
 
-    if (!args[0].Contains(".sym"))
+    if (!args[0].Contains(".sym", StringComparison.InvariantCultureIgnoreCase))
     {
         Console.WriteLine(SYMREAD_STRING_ERROR_FILE_NOT_SYM);
     }
