@@ -29,6 +29,7 @@ Then absolute-addressed constants (?) using the symbol fomrmat, and then each se
 Then same symbol format as segment symbols.
 
 Segment header (32 bytes):
+
 0x00			WORD		Unknown. :(
 
 0x02			WORD		Number of symbols in this segment
@@ -48,6 +49,7 @@ Segment header (32 bytes):
 0x15			STRING		Segment name
 
 After the segment header, you have the symbols themselves:
+
 0x00			WORD		Offset from segment start that the symbol resides
 
 0x02			BYTE		Length of string
