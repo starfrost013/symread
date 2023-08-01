@@ -8,8 +8,4 @@
 	  <PublishAOT>true</PublishAOT>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Starlib.Utilities" Version="1.0.0" />
-  </ItemGroup>
-
 </Project>

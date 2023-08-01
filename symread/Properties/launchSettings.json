@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "symread": {
+      "commandName": "Project",
+      "commandLineArgs": "ibmbio.sym"
+    }
+  }
+}
