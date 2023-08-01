@@ -61,7 +61,7 @@ try
             ushort address = reader.ReadUInt16();                                               // its over if you wanted over 64kb of constants
             string name = reader.ReadString();
 
-            Console.WriteLine($"ABSOLUTE ADDRESS 0x{address:X4}: {name}");                      // converting MAP files to SYM indicates these are absolute addresses from the start of the file
+            Console.WriteLine($"START OF CODE+ 0x{address:X4}: {name}");                      // converting MAP files to SYM indicates these are absolute addresses from the start of the file
         }
         #endregion
 

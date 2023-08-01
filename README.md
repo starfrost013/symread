@@ -22,11 +22,11 @@
 
 0x10 -			STRING -	Name of binary 
 
-Then absolute-addressed constants (?) using the symbol fomrmat, and then each segment is defined:
+Then absolute-addressed constants (?) using the symbol format, and then each segment is defined:
 
 0x00 -			BYTE -		Unknown.
 
-The symbols are then addressed in the same format as in actual code segments.
+The symbols are then addressed in the same format as in actual code segments (all addresses are from the start of the code).
 
 ## Segment header (21 + length of function name bytes):
 
