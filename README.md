@@ -1,6 +1,6 @@
 # SYMREAD: A tool to read early (mid-80s) Microsoft SYMDEB format .SYM files. They were used in early OS/2 1.0 builds, Windows 1.x, and Windows 2.x
 
-**NOTE: This tool has not been tested with and probably will not work with Windows 3.x and 95 format .SYM files. They seem to be different at a cursory inspection. **
+__NOTE: This tool has not been tested with and probably will not work with Windows 3.x and 95 format .SYM files. They seem to be different at a cursory inspection.__
 
 # File format documentation:
 
