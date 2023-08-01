@@ -6,15 +6,10 @@ try
     #region Globals 
     // localise here
     const string SYMREAD_STRING_BRANDING = $"SymRead (proof of concept version)";
-    const string SYMREAD_STRING_DESCRIPTION = $"A program to read Windows Symdeb format files\n"; // extra newline
+    const string SYMREAD_STRING_DESCRIPTION = $"A program to read Windows Symdeb format files"; // extra newline
     const string SYMREAD_STRING_ERROR_NO_FILE_PROVIDED = "File not found!";
     const string SYMREAD_STRING_ERROR_FILE_NOT_SYM = "File is not a .SYM file!";
     const string SYMREAD_STRING_HELP = "Syntax: symread [file name]...";
-    #endregion
-
-    #region Sign-on
-    Console.WriteLine(SYMREAD_STRING_BRANDING);
-    Console.WriteLine(SYMREAD_STRING_DESCRIPTION);
     #endregion
 
     #region Argument parsing
@@ -28,7 +23,13 @@ try
     if (!args[0].Contains(".sym", StringComparison.InvariantCultureIgnoreCase))
     {
         Console.WriteLine(SYMREAD_STRING_ERROR_FILE_NOT_SYM);
+        PrintHelpAndExit(2);
     }
+    #endregion
+
+    #region Sign-on
+    Console.WriteLine(SYMREAD_STRING_BRANDING);
+    Console.WriteLine(SYMREAD_STRING_DESCRIPTION);
     #endregion
 
     var fileName = args[0];
