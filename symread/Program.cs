@@ -5,7 +5,7 @@ try
 {
     #region Globals 
     // localise here
-    const string SYMREAD_STRING_BRANDING = $"SymRead (proof of concept version)";
+    const string SYMREAD_STRING_BRANDING = $"SymRead (proof of concept 1.0.2)";
     const string SYMREAD_STRING_DESCRIPTION = $"A program to read Windows Symdeb format files"; // extra newline
     const string SYMREAD_STRING_ERROR_NO_FILE_PROVIDED = "File not found!";
     const string SYMREAD_STRING_ERROR_FILE_NOT_SYM = "File is not a .SYM file!";
@@ -80,20 +80,22 @@ try
             ushort numberOfSymbols = reader.ReadUInt16();                                       // Number of symbols in segment:            0x02
             ushort sizeOfSymbolData = reader.ReadUInt16();                                      // Size of symbol data:                     0x04
             ushort realSegmentNumber = reader.ReadUInt16();
-            Console.WriteLine($"\n** READING SEGMENT {realSegmentNumber} **\n");                  // Using numSegments doesn't matter as we got it from the header. But use the real segment number, just in case it's out of order on some binary.              
-            Console.WriteLine($"Number of symbols: {numberOfSymbols}");                         // Print out all that metadata we just got...
-            Console.WriteLine($"Size of symbol data: {sizeOfSymbolData}");
-
             // Next 12 bytes don't seem to matter, and are seemingly always 00 00 00 00 00 00 00 00 00 00 00 FF for every segment.
             reader.ReadBytes(12);
-            Console.WriteLine($"Segment name: {reader.ReadString()}\n");
+
+            string segmentName = reader.ReadString();                                           // Segment name:                            0x14 length: 0x15 for everything else,
+
+            Console.WriteLine($"\n** READING SEGMENT {segmentName} **\n");                // Using numSegments doesn't matter as we got it from the header. But use the real segment number, just in case it's out of order on some binary.              
+            Console.WriteLine($"Number of symbols: {numberOfSymbols}");                         // Print out all that metadata we just got...
+            Console.WriteLine($"Size of symbol data: {sizeOfSymbolData}");
+            Console.WriteLine($"Segment number: {realSegmentNumber}\n");
 
             for (int currentSymbol = 0; currentSymbol < numberOfSymbols; currentSymbol++)       // Iterate through every symbol.
             {
                 ushort offset = reader.ReadUInt16();
                 string symbolName = reader.ReadString();
 
-                Console.WriteLine($"{realSegmentNumber:D4}:{offset:X4}: {symbolName}");
+                Console.WriteLine($"{segmentName}:{offset:X4}\t {symbolName}");
             }
 
             // (again) skip the unknown data for now...
