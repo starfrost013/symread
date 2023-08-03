@@ -49,7 +49,7 @@ try
     {
         #region Reading header
         Console.WriteLine("\n** READING HEADER **\n");
-        Console.WriteLine($"Segment ptr to next symbol map (0 if end) {reader.ReadUInt16()}");  // Pointer to next symbol map:           0x00 (always lower than total symbol count)
+        Console.WriteLine($"Segment ptr to next symbol map (0 if end) {reader.ReadUInt16()}");  // Pointer to next symbol map:              0x00 (always lower than total symbol count)
         reader.ReadBytes(4);                                                                    // Currently unknown:                       0x02, 0x04
         ushort numberOfConstants = reader.ReadUInt16();                                         // Number of symbols for constants section  0x06
         Console.WriteLine($"Number of constants: {numberOfConstants}");
@@ -65,7 +65,7 @@ try
         // Segment 0 is a bit weird. It holds constants that are referenced with absolute addresses.
         // We just handle it separately lol.
 
-        Console.WriteLine("\n** READING CONSTANTS SEGMENT **\n");
+        Console.WriteLine("\n** READING CONSTANTS **\n");
         reader.ReadByte();                                                                      // random extra byte here. idk why. might as well put a nice string...
 
         for (int numConstant = 0; numConstant < numberOfConstants; numConstant++)
