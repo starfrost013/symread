@@ -2,6 +2,7 @@
  *  A program to read SYMDEB (Microsoft Symbolic Debugging Utility) / WDEB386 (Windows Debugger for 80386+) symbol (.SYM) files. 
  *  
  *  © 2023 starfrost
+ *  Licensed under the MIT License (see version.txt)
  */
 
 #region Globals 
@@ -87,7 +88,7 @@ try
 
         for (int currentSegment = 0; currentSegment < numberOfSegments; currentSegment++)       // iterate through all of the segments.
         {                                                                                       // **SEGMENT HEADER**
-            Console.WriteLine($"Next segment pointer: (0x00 if last) {reader.ReadBytes(2)}");   // Pointer to next segment                  0x00
+            Console.WriteLine($"Next segment pointer: (0x00 if last): 0x{reader.ReadUInt16():X}");   // Pointer to next segment                  0x00
             ushort numberOfSymbols = reader.ReadUInt16();                                       // Number of symbols in segment:            0x02
             ushort sizeOfSymbolData = reader.ReadUInt16();                                      // Size of symbol data:                     0x04
             ushort realSegmentNumber = reader.ReadUInt16();
