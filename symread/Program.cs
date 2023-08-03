@@ -73,7 +73,7 @@ try
             ushort address = reader.ReadUInt16();                                               // its over if you wanted over 64kb of constants
             string name = reader.ReadString();
 
-            Console.WriteLine($"START OF CODE + 0x{address:X4}: {name}");                      // converting MAP files to SYM indicates these are absolute addresses from the start of the file
+            Console.WriteLine($"START OF CODE + 0x{address:X4}: {name}");                       // converting MAP files to SYM indicates these are absolute addresses from the start of the file
         }
         #endregion
 
@@ -88,7 +88,7 @@ try
 
         for (int currentSegment = 0; currentSegment < numberOfSegments; currentSegment++)       // iterate through all of the segments.
         {                                                                                       // **SEGMENT HEADER**
-            Console.WriteLine($"Next segment pointer: (0x00 if last): 0x{reader.ReadUInt16():X}");   // Pointer to next segment                  0x00
+            Console.WriteLine($"Next segment ptr: (0x00 if last): 0x{reader.ReadUInt16():X}");  // Pointer to next segment                  0x00
             ushort numberOfSymbols = reader.ReadUInt16();                                       // Number of symbols in segment:            0x02
             ushort sizeOfSymbolData = reader.ReadUInt16();                                      // Size of symbol data:                     0x04
             ushort realSegmentNumber = reader.ReadUInt16();
