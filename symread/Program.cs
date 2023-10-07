@@ -2,40 +2,19 @@
  *  A program to read SYMDEB (Microsoft Symbolic Debugging Utility) / WDEB386 (Windows Debugger for 80386+) symbol (.SYM) files. 
  *  
  *  © 2023 starfrost
- *  Licensed under the MIT License (see version.txt)
+ *  Licensed under the MIT License (see LICENSE file)
  */
 
 #region Globals 
 
-const int SYMREAD_VERSION_MAJOR = 1;
-const int SYMREAD_VERSION_MINOR = 1;
-const int SYMREAD_VERSION_REVISION = 0;
-
-// localise here
-// not a const because it substitutes in the version number
-string SYMREAD_STRING_BRANDING = $"SymRead (proof of concept {SYMREAD_VERSION_MAJOR}.{SYMREAD_VERSION_MINOR}.{SYMREAD_VERSION_REVISION})";
-const string SYMREAD_STRING_DESCRIPTION = $"A program to read Windows Symdeb format files"; 
-const string SYMREAD_STRING_ERROR_NO_FILE_PROVIDED = "File not found!";
-const string SYMREAD_STRING_ERROR_FILE_NOT_SYM = "File is not a .SYM file!";
-const string SYMREAD_STRING_HELP = "Syntax: symread [file name]...";
-const string SYMREAD_STRING_ERROR = "An error occurred! Report it to starfrost...(starfrost#7777, or new way: thefrozenstar_)\nException info:\n\n";
 #endregion
+
+using symread;
 
 try
 {
     #region Argument parsing
-    if (args.Length < 1
-        || !File.Exists(args[0]))
-    {
-        Console.WriteLine(SYMREAD_STRING_ERROR_NO_FILE_PROVIDED);
-        PrintHelpAndExit(1);
-    }
-
-    if (!args[0].Contains(".sym", StringComparison.InvariantCultureIgnoreCase))
-    {
-        Console.WriteLine(SYMREAD_STRING_ERROR_FILE_NOT_SYM);
-        PrintHelpAndExit(2);
-    }
+    CommandLine.Parse(args);
     #endregion
 
     #region Sign-on
@@ -119,23 +98,13 @@ try
         }
 
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("\nDone!");
+        Console.WriteLine(SYMREAD_STRING_DONE);
         Console.ResetColor();
 
         #endregion
     }
-
-    #region Utility functions
-
-    void PrintHelpAndExit(int exitCode)
-    {
-        Console.WriteLine(SYMREAD_STRING_HELP, ConsoleColor.White, false);
-        Environment.Exit(exitCode);
-    }
-
-    #endregion
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"{SYMREAD_STRING_ERROR}{ex}");
+    Console.WriteLine($"{SYMREAD_STRING_ERROR_GENERIC}{ex}");
 }
