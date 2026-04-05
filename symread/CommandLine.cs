@@ -173,9 +173,12 @@ namespace symread
             if (args.Length < 1) PrintError(SYMREAD_STRING_ERROR_NO_ARGS, ConsoleColor.Red, true);
             if (InputFile == null) PrintError(SYMREAD_STRING_ERROR_INPUT_NO_FILE_PROVIDED, ConsoleColor.Red, true);
             if (!File.Exists(InputFile)) PrintError(SYMREAD_STRING_ERROR_INPUT_INVALID_FILE_PROVIDED, ConsoleColor.Red, true);
+
             // output is required for everything afaik
-            if (OutputFile == null) PrintError(SYMREAD_STRING_ERROR_OUTPUT_NO_FILE_PROVIDED, ConsoleColor.Red, true);
-            if (!File.Exists(OutputFile)) PrintError(SYMREAD_STRING_ERROR_OUTPUT_INVALID_FILE_PROVIDED, ConsoleColor.Red, true);
+            if (OutputFile == null) 
+                PrintError(SYMREAD_STRING_ERROR_OUTPUT_NO_FILE_PROVIDED, ConsoleColor.Red, true);
+            else if (!File.Exists(OutputFile)) 
+                File.Create(OutputFile);
         }
     }
 }

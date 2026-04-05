@@ -1,13 +1,9 @@
 ﻿/*  SymRead
  *  A program to read SYMDEB (Microsoft Symbolic Debugging Utility) / WDEB386 (Windows Debugger for 80386+) symbol (.SYM) files. 
  *  
- *  © 2023 starfrost
+ *  © 2023-2026 starfrost
  *  Licensed under the MIT License (see LICENSE file)
  */
-
-#region Globals 
-
-#endregion
 
 using symread;
 
@@ -18,8 +14,8 @@ try
     #endregion
 
     #region Sign-on
-    Console.WriteLine(SYMREAD_STRING_BRANDING);
-    Console.WriteLine(SYMREAD_STRING_DESCRIPTION);
+    Print(SYMREAD_STRING_BRANDING);
+    Print(SYMREAD_STRING_DESCRIPTION);
     #endregion
 
     var fileName = args[0];

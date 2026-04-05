@@ -13,7 +13,7 @@ namespace symread
 
         // Branding and sign-on
         internal static string SYMREAD_STRING_BRANDING = $"SymRead v{SYMREAD_VERSION_MAJOR}.{SYMREAD_VERSION_MINOR}.{SYMREAD_VERSION_REVISION}";
-        internal const string SYMREAD_STRING_DESCRIPTION = $"A program to read Symdeb format files, used by many early Microsoft operating systems and compilers from 1984 to 1990";
+        internal const string SYMREAD_STRING_DESCRIPTION = $"A program to read Symdeb/Wdeb386/Wdeb98 format files, used by many early Microsoft operating systems and compilers from 1984 to 2000";
 
         // Error strings
         internal const string SYMREAD_STRING_ERROR_GENERIC = "An error occurred! Report it to starfrost...(starfrost#7777, or new way: thefrozenstar_)\nException info:\n\n";
@@ -52,18 +52,18 @@ namespace symread
         internal const string SYMREAD_STRING_DONE = "\nDone!";
 
         internal const string SYMREAD_STRING_HELP = "Syntax:\n" +
-            "symread [-f3/-f4/-f5] [-text/-map] [-quiet/loud] input file [output file]\n\n" +
-            "Input file options:\n\n" +
+            "symread [-f3/-f4/-f5] [-text/-map/-sym] [-quiet/loud] input file [output file]\n\n" +
+            "Input file options:\n" +
             "-f: Format version. Must be followed by format version number between 3 and 5:\n" +
             "\t-f3: Symdeb v3.x (1984-85) - use for Windows 1.0 Alpha, MASM 3.x and MSC 3.x apps\n" +
-            "\t-f4: Symdeb v3.Windows / v4.x (1985-87) - use for Windows 1.0x, OS/2 1986 and early 1987 builds, MT-DOS/Multitasking DOS 4.0, MASM 4.x and MSC 4.x apps\n" +
-            "\t-f5: Symdeb v5 (1987-1990) - use for Windows 2.x, 3.0, later OS/2, possibly Multitasking DOS 4.1. Not included with MASM 5.x, but use for MASM 5.x and MSC 5.x apps\n\n" +
+            "\t-f4: Symdeb v3.Windows / v4.x (1985-87) - use for Windows 1.0x, OS/2 1986 and early 1987 builds, \n\tMT-DOS/Multitasking DOS 4.0, MASM 4.x and MSC 4.x apps\n" +
+            "\t-f5: Symdeb v5 (1987-1990) - use for Windows 2.x, 3.0, later OS/2, possibly Multitasking DOS 4.1. \n\tNot included with MASM 5.x, but use for MASM 5.x and MSC 5.x apps\n\n" +
             "\tDefault value: 4\n\n" +
-            "Verbosity options:\n\n" +
+            "Verbosity options:\n" +
             "\t-quiet: Quiet verbosity. Only errors and warnings are printed.\n" +
             "\t-loud: Loud verbosity. Debug information is printed. Overrides -quiet if both are provided.\n\n" +
             "\tDefault value: normal verbosity (neither -quiet or -loud provided)\n\n" +
-            "Output file options:\n\n" +
+            "Output file options:\n" +
             "\t-map: Output MAP format\n" +
             "\t-sym: Output SYM format\n" +
             "\t-text: Output Symread 1.x text format\n" +
